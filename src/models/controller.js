@@ -53,9 +53,9 @@ function returnName(gtable){
         if (err) throw err;
         con.query(`SELECT * FROM ${gtable}`, function(err, result, fields) {
             if (err) throw err;
-            console.log(result);
-            console.log(result[0]);
-            return(result.name);
+            //console.log(result);
+            //console.log(result[0].name.toString());
+            return result[0].name.toString();
         });
     });
 }

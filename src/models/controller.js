@@ -1,4 +1,4 @@
-function Reg(gTable, gname, gaddress, guserName, gpassword){
+function studentReg(gname, gaddress, guserName, gpassword, gtele, gmajor, gminor, gnotes){
     var mysql = require('mysql');
 
     var con = mysql.createConnection({
@@ -12,7 +12,7 @@ function Reg(gTable, gname, gaddress, guserName, gpassword){
     con.connect(function(err) {
         if (err) throw err;
         console.log("connected!");
-        var sql = `INSERT INTO ${gTable} (name, address, userName, password) VALUES ("${gname}", "${gaddress}", "${guserName}", "${gpassword}")`;
+        var sql = `INSERT INTO Students (name, address, userName, password, tele, major, minor, notes) VALUES ("${gname}", "${gaddress}", "${guserName}", "${gpassword}", "${gtele}", "${gmajor}", "${gminor}", "${gnotes}")`;
         con.query(sql, function (err, result) {
             if (err) throw err;
             console.log("1 record inserted");
@@ -107,4 +107,4 @@ async function returnLogin(gtable, id){
     return await p;
 }
 
-module.exports = {Reg, returnName, returnTable, returnLogin}
+module.exports = {studentReg, returnName, returnTable, returnLogin}

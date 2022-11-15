@@ -3,12 +3,12 @@ body {
 }
 .sidenav {
     height: 100%;
-    width: 10%;
+    width: 8%;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: rgb(11, 160, 247);
+    background-color: rgb(131, 148, 158);
     overflow-x: hidden;
     padding-top: 20px;
   }
@@ -16,7 +16,7 @@ body {
   .sidenav a {
     padding: 6px 6px 20px 16px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 16px;
     color: #ffffff;
     display: block;
   }
@@ -28,7 +28,7 @@ body {
 #id_homepage {
     display: flex;
     flex-direction: row;
-    margin: 0% 10%;
+    margin: 0% 0% 0% 10%;
     border-bottom: 1px solid white;
 }
 
@@ -41,10 +41,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 600px;
-    width: auto;
+    height: 660px;
+    width: 1250px;
     background-color: #9AA5B1;
     margin: 3% 10%;
+    border-radius: 25px;
 }
 
 #login-box-top {

@@ -8,6 +8,12 @@ body {
     margin: 0% 0% 0% 10%;
 }
 
+#myline{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.979);
+    width: 80%;
+    margin: 0% 0% 0% 10%;
+}
+
 #id_homepage a {
     text-decoration: none;
     color: white;

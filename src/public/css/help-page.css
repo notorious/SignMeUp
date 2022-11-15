@@ -54,7 +54,18 @@ body {
     justify-content: left;
     margin: -2% 1%;
     padding: 2px 2px;
-    border-color: rgb(197, 146, 36);
+    border-color: rgb(225, 172, 11);
+    cursor: pointer;
+    border-width: medium;
+    font-weight: 600;
+}
+
+.helpButton {
+    display: flex;
+    justify-content: right;
+    margin: -39.5% 87%;
+    padding: 2px 2px;
+    border-color: rgb(225, 172, 11);
     cursor: pointer;
     border-width: medium;
     font-weight: 600;

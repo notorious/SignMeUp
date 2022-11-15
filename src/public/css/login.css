@@ -48,5 +48,16 @@ body {
     border-radius: 25px;
 }
 
+.helpButton {
+    display: flex;
+    justify-content: right;
+    margin: -39.5% 87%;
+    padding: 2px 2px;
+    border-color: rgb(225, 172, 11);
+    cursor: pointer;
+    border-width: medium;
+    font-weight: 600;
+}
+
 
 

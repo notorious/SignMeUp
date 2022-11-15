@@ -28,7 +28,7 @@ body {
 #id_homepage {
     display: flex;
     flex-direction: row;
-    margin: 0% 10%;
+    margin: 0% 0% 0% 10%;
     border-bottom: 1px solid white;
 }
 
@@ -41,10 +41,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 600px;
-    width: auto;
+    height: 660px;
+    width: 1250px;
     background-color: #9AA5B1;
     margin: 3% 10%;
+    border-radius: 25px;
 }
 
 #login-box-top {

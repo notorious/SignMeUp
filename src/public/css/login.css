@@ -48,10 +48,6 @@ body {
     border-radius: 25px;
 }
 
-#space-fill {
-    width: max-content;
-}
-
 .helpButton {
     border-color: rgb(225, 172, 11);
     

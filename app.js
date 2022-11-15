@@ -1,6 +1,9 @@
 const { json } = require('express')
 const express = require('express')
-var allstudent = require('./students.json')
+var allstudents = require('./students.json')
+const flash = require('express-flash')
+const session = require('express-session')
+const methodOverride = require('method-override')
 const app = express()
 
 // Static Rendering
@@ -25,8 +28,11 @@ app.get('/login', (req, res) => {
 })
 
 app.post('/login', (req, res)=> {
-  var user = req.body.user;
-  var pass = req.body.pass;
+  
+});
+
+app.get("/", function(req, res){
+    res.render('dashboard', {name: name});
 })
 
 

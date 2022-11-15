@@ -1,4 +1,4 @@
-function studentReg(gname, gaddress, guserName, gpassword){
+function Reg(gTable, gname, gaddress, guserName, gpassword){
     var mysql = require('mysql');
 
     var con = mysql.createConnection({
@@ -12,13 +12,14 @@ function studentReg(gname, gaddress, guserName, gpassword){
     con.connect(function(err) {
         if (err) throw err;
         console.log("connected!");
-        var sql = "INSERT INTO Students (name, address, userName, password) VALUES (${gname}, ${gaddress}, ${guserName}, ${gpassword})";
+        var sql = `INSERT INTO ${gTable} (name, address, userName, password) VALUES ("${gname}", "${gaddress}", "${guserName}", "${gpassword}")`;
         con.query(sql, function (err, result) {
             if (err) throw err;
             console.log("1 record inserted");
         });
     });
 }
+/*
 function displayTable(gtable){
     var mysql = require('mysql');
 
@@ -38,7 +39,9 @@ function displayTable(gtable){
         });
     });
 }
+*/
 
+//Currently broken please see example of how to get name from returnTable
 function returnName(gtable){
     var mysql = require('mysql');
 
@@ -60,4 +63,48 @@ function returnName(gtable){
     });
 }
 
-module.exports = {studentReg, displayTable, returnName}
+async function returnTable(gtable){
+    var mysql = require('mysql');
+    
+    var con = mysql.createConnection({
+        host: "fcfs.c2oe7fkglsr2.us-west-2.rds.amazonaws.com",
+        user: "admin",
+        password: "529dh-bj345-wbedaj",
+        database: "FCFS"
+    });
+
+    let p = new Promise(function(res,rej) {
+        con.connect(function(err){
+            if (err) throw err;
+            con.query(`SELECT * FROM ${gtable}`, function(err, result, fields) {
+                if (err) throw err;
+                res(result);
+            });
+        });    
+    });
+    return await p;
+}
+//function that can return the id, username, and password of a user from a desired table (Student or Faculty)
+async function returnLogin(gtable, id){
+    var mysql = require('mysql');
+    
+    var con = mysql.createConnection({
+        host: "fcfs.c2oe7fkglsr2.us-west-2.rds.amazonaws.com",
+        user: "admin",
+        password: "529dh-bj345-wbedaj",
+        database: "FCFS"
+    });
+
+    let p = new Promise(function(res,rej) {
+        con.connect(function(err){
+            if (err) throw err;
+            con.query(`SELECT id, userName, password FROM ${gtable} WHERE id = ${id}`, function(err, result, fields) {
+                if (err) throw err;
+                res(result);
+            });
+        });    
+    });
+    return await p;
+}
+
+module.exports = {Reg, returnName, returnTable, returnLogin}

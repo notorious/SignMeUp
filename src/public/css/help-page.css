@@ -9,6 +9,22 @@ body {
     border-bottom: 1px solid white;
 }
 
+#login-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 600px;
+    width: auto;
+    background-color: #9AA5B1;
+    margin: 3% 10%;
+}
+
+#login-box-top {
+    background-image: url("https://arweb.sdsu.edu/es/webportal/images/bg_header.png");
+    height: 71px;
+    width: 100%;
+}
+
 #helpHeader {
     display: flex;
     justify-content: center;
@@ -18,7 +34,7 @@ body {
 #helpParagraph {
     display: flex;
     justify-content: center;
-    font-size: 25px;
+    font-size: 26px;
     color: white;
 }
 
@@ -33,6 +49,9 @@ body {
 .homeButton {
     display: flex;
     justify-content: left;
-    margin: 1% 19%;
-    padding: 0px 20px;
+    margin: -2% 2%;
+    padding: 2px 2px;
+    border-color: rgb(197, 146, 36);
+    cursor: pointer;
+    border-width: medium;
 }

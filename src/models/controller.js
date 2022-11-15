@@ -19,8 +19,8 @@ function studentReg(gname, gaddress, guserName, gpassword, gdob, gtele, gmajor, 
         });
     });
 }
-/*
-function displayTable(gtable){
+
+function facultyReg(gname, guserName, gpassword, gtele, gofficeTele, gofficeHours, gofficeNum, gtitle){
     var mysql = require('mysql');
 
     var con = mysql.createConnection({
@@ -31,39 +31,16 @@ function displayTable(gtable){
     });
 
 
-    con.connect(function(err){
+    con.connect(function(err) {
         if (err) throw err;
-        con.query("SELECT * FROM ${gtable}", function(err, result, fields) {
+        console.log("connected!");
+        var sql = `INSERT INTO Faculty (name, userName, password, tele, officeTele, officeHours, officeNum, title) VALUES ("${gname}", "${guserName}", "${gpassword}", "${gtele}", "${gofficeTele}", "${gofficeHours}", "${gofficeNum}", "${gtitle}")`;
+        con.query(sql, function (err, result) {
             if (err) throw err;
-            console.log(result);
+            console.log("1 record inserted");
         });
     });
 }
-*/
-
-//Currently broken please see example of how to get name from returnTable
-/*
-function returnName(gtable){
-    var mysql = require('mysql');
-
-    var con = mysql.createConnection({
-        host: "fcfs.c2oe7fkglsr2.us-west-2.rds.amazonaws.com",
-        user: "admin",
-        password: "529dh-bj345-wbedaj",
-        database: "FCFS"
-    });
-
-    con.connect(function(err){
-        if (err) throw err;
-        con.query(`SELECT * FROM ${gtable}`, function(err, result, fields) {
-            if (err) throw err;
-            //console.log(result);
-            //console.log(result[0].name.toString());
-            return result[0].name.toString();
-        });
-    });
-}
-*/
 
 async function returnTable(gtable){
     var mysql = require('mysql');
@@ -131,4 +108,4 @@ async function returnStudentReport(id){
     return await p;
 }
 
-module.exports = {studentReg, returnTable, returnLogin, returnStudentReport}
+module.exports = {studentReg, facultyReg, returnTable, returnLogin, returnStudentReport}

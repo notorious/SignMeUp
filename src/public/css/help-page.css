@@ -28,7 +28,7 @@ body {
 #helpHeader {
     display: flex;
     justify-content: center;
-    color: white;
+    color: black;
     font-weight: 600;
 }
 
@@ -36,15 +36,15 @@ body {
     display: flex;
     justify-content: center;
     font-size: 26px;
-    color: white;
+    color: black;
     font-weight: 600;
 }
 
 #contactInfo {
     display: flex;
-    color: white;
+    color: black;
     justify-content: center;
-    padding: 0px 425px;
+    padding: 20px 425px;
     font-size: 23px;
     font-weight: 600;
 }
@@ -54,7 +54,18 @@ body {
     justify-content: left;
     margin: -2% 1%;
     padding: 2px 2px;
-    border-color: rgb(197, 146, 36);
+    border-color: rgb(225, 172, 11);
+    cursor: pointer;
+    border-width: medium;
+    font-weight: 600;
+}
+
+.helpButton {
+    display: flex;
+    justify-content: right;
+    margin: -39.5% 87%;
+    padding: 2px 2px;
+    border-color: rgb(225, 172, 11);
     cursor: pointer;
     border-width: medium;
     font-weight: 600;

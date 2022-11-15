@@ -8,7 +8,7 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: rgb(131, 148, 158);
+    background-color: rgb(17, 17, 17);
     overflow-x: hidden;
     padding-top: 20px;
   }
@@ -17,7 +17,7 @@ body {
     padding: 6px 6px 20px 16px;
     text-decoration: none;
     font-size: 16px;
-    color: #ffffff;
+    color: #afafaf;
     display: block;
   }
   
@@ -41,10 +41,10 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 660px;
-    width: 1250px;
+    height: 1000px;
+    width: auto;
     background-color: #9AA5B1;
-    margin: 3% 10%;
+    margin: 3% 3% 3% 10%;
     border-radius: 25px;
 }
 

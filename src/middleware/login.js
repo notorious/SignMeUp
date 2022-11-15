@@ -6,7 +6,7 @@ const path = require('path');
 const connection = mysql.createConnection({
 	host     : 'localhost',
 	user     : 'admin',
-	password : '529dh-bj345-wbedaj',
+	password : '529dh-bj345-wbedaj'
 	database : 'FCFS'
 });
 

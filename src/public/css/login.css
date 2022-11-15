@@ -50,8 +50,13 @@ body {
 
 .helpButton {
     border-color: rgb(225, 172, 11);
-    
+    cursor: pointer;
+    border-width: medium;
+    font-weight: 600;
 }
 
+.helpButton:hover {
+    text-decoration-line: underline;
+}
 
 

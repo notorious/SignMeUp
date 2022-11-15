@@ -5,8 +5,7 @@ body {
 #id_homepage {
     display: flex;
     flex-direction: row;
-    margin: 0% 10%;
-    border-bottom: 1px solid white;
+    margin: 0% 0% 0% 10%;
 }
 
 #id_homepage a {
@@ -55,4 +54,28 @@ body {
 
 li {
     list-style: none;
+}
+
+
+#myline{
+    border-bottom: 1px solid white;
+}
+
+#help{
+    display: inline;
+    padding-top: 1.35%;
+    padding-right: 10%;
+    float: right;
+}
+
+.helpButton {
+    border-color: rgb(225, 172, 11);
+    cursor: pointer;
+    border-width: medium;
+    font-weight: 600;
+    float: right;
+}
+
+.helpButton:hover {
+    text-decoration-line: underline;
 }

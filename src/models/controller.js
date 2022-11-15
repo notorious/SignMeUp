@@ -1,4 +1,4 @@
-function studentReg(gname, gaddress, guserName, gpassword){
+function Reg(gTable, gname, gaddress, guserName, gpassword){
     var mysql = require('mysql');
 
     var con = mysql.createConnection({
@@ -12,13 +12,14 @@ function studentReg(gname, gaddress, guserName, gpassword){
     con.connect(function(err) {
         if (err) throw err;
         console.log("connected!");
-        var sql = "INSERT INTO Students (name, address, userName, password) VALUES (${gname}, ${gaddress}, ${guserName}, ${gpassword})";
+        var sql = `INSERT INTO ${gTable} (name, address, userName, password) VALUES ("${gname}", "${gaddress}", "${guserName}", "${gpassword}")`;
         con.query(sql, function (err, result) {
             if (err) throw err;
             console.log("1 record inserted");
         });
     });
 }
+/*
 function displayTable(gtable){
     var mysql = require('mysql');
 
@@ -38,7 +39,9 @@ function displayTable(gtable){
         });
     });
 }
+*/
 
+//Currently broken please see example of how to get name from returnTable
 function returnName(gtable){
     var mysql = require('mysql');
 
@@ -70,7 +73,7 @@ async function returnTable(gtable){
         database: "FCFS"
     });
 
-    let nameFound = new Promise(function(res,rej) {
+    let p = new Promise(function(res,rej) {
         con.connect(function(err){
             if (err) throw err;
             con.query(`SELECT * FROM ${gtable}`, function(err, result, fields) {
@@ -79,7 +82,7 @@ async function returnTable(gtable){
             });
         });    
     });
-    return await nameFound;
+    return await p;
 }
 
-module.exports = {studentReg, displayTable, returnName, returnTable}
+module.exports = {Reg, returnName, returnTable}

@@ -12,6 +12,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 // View Engine
+app.set('views','./views');
 app.set('view engine', 'ejs')
 
 // Express Routing
@@ -21,6 +22,11 @@ app.get('/', (req, res) => {
 
 app.get('/login', (req, res) => {
   res.render("login.ejs")
+})
+
+app.post('/login', (req, res)=> {
+  var user = req.body.user;
+  var pass = req.body.pass;
 })
 
 

@@ -1,4 +1,4 @@
-function Reg(gTable, gname, gaddress, guserName, gpassword){
+function studentReg(gname, gaddress, guserName, gpassword, gdob, gtele, gmajor, gminor, gnotes){
     var mysql = require('mysql');
 
     var con = mysql.createConnection({
@@ -12,7 +12,7 @@ function Reg(gTable, gname, gaddress, guserName, gpassword){
     con.connect(function(err) {
         if (err) throw err;
         console.log("connected!");
-        var sql = `INSERT INTO ${gTable} (name, address, userName, password) VALUES ("${gname}", "${gaddress}", "${guserName}", "${gpassword}")`;
+        var sql = `INSERT INTO Students (name, address, userName, password, dob, tele, major, minor, notes) VALUES ("${gname}", "${gaddress}", "${guserName}", "${gpassword}", "${gdob}", "${gtele}", "${gmajor}", "${gminor}", "${gnotes}")`;
         con.query(sql, function (err, result) {
             if (err) throw err;
             console.log("1 record inserted");
@@ -42,6 +42,7 @@ function displayTable(gtable){
 */
 
 //Currently broken please see example of how to get name from returnTable
+/*
 function returnName(gtable){
     var mysql = require('mysql');
 
@@ -62,6 +63,7 @@ function returnName(gtable){
         });
     });
 }
+*/
 
 async function returnTable(gtable){
     var mysql = require('mysql');
@@ -107,4 +109,26 @@ async function returnLogin(gtable, id){
     return await p;
 }
 
-module.exports = {Reg, returnName, returnTable, returnLogin}
+async function returnStudentReport(id){
+    var mysql = require('mysql');
+    
+    var con = mysql.createConnection({
+        host: "fcfs.c2oe7fkglsr2.us-west-2.rds.amazonaws.com",
+        user: "admin",
+        password: "529dh-bj345-wbedaj",
+        database: "FCFS"
+    });
+
+    let p = new Promise(function(res,rej) {
+        con.connect(function(err){
+            if (err) throw err;
+            con.query(`SELECT id, name, tele, address, dob, major, minor, notes FROM Students WHERE id = ${id}`, function(err, result, fields) {
+                if (err) throw err;
+                res(result);
+            });
+        });    
+    });
+    return await p;
+}
+
+module.exports = {studentReg, returnTable, returnLogin, returnStudentReport}

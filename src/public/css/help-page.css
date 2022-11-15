@@ -29,6 +29,7 @@ body {
     display: flex;
     justify-content: center;
     color: white;
+    font-weight: 600;
 }
 
 #helpParagraph {
@@ -36,22 +37,25 @@ body {
     justify-content: center;
     font-size: 26px;
     color: white;
+    font-weight: 600;
 }
 
 #contactInfo {
     display: flex;
     color: white;
-    justify-content: left;
+    justify-content: center;
     padding: 0px 425px;
-    font-size: 22px;
+    font-size: 23px;
+    font-weight: 600;
 }
 
 .homeButton {
     display: flex;
     justify-content: left;
-    margin: -2% 2%;
+    margin: -2% 1%;
     padding: 2px 2px;
     border-color: rgb(197, 146, 36);
     cursor: pointer;
     border-width: medium;
+    font-weight: 600;
 }

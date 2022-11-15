@@ -32,6 +32,15 @@ body {
 
 }
 
+#id_homepage a:link {
+    text-decoration: none;
+    color: rgb(252, 8, 8);
+}
+
+#id_homepage a:hover {
+    text-decoration: none;
+    color: rgb(252, 8, 8);
+}
 #id_homepage a {
     text-decoration: none;
     color: white;

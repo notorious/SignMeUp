@@ -29,15 +29,24 @@ body {
     display: flex;
     flex-direction: row;
     margin: 0% 0% 0% 10%;
+
+}
+
+#id_homepage a:link {
+    text-decoration: none;
+    color: rgb(252, 8, 8);
+}
+
+#id_homepage a:hover {
+    text-decoration: none;
+    color: rgb(252, 8, 8);
+}
+
+#myline{
     border-bottom: 1px solid white;
 }
 
-#id_homepage a {
-    text-decoration: none;
-    color: white;
-}
-
-#login-box {
+#main-box {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -47,51 +56,17 @@ body {
     margin: 3% 3% 3% 10%;
     border-radius: 25px;
 }
-
-#login-box-top {
-    background-image: url("https://arweb.sdsu.edu/es/webportal/images/bg_header.png");
-    height: 71px;
-    width: 100%;
-}
-
-#id {
-    display: flex;
-    flex-direction: column;
-}
-
-#login-reg-left {
-    margin-top: 3%;
-    display: flex;
-    justify-content: left;
-    width: 100%;
-}
-
-#login-reg-left #leftbox {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: rgb(176, 173, 173);
-    border-radius: 40px;
-    height: 150px;
-    width: 800px;
-}
-
-#login-reg-box {
-    margin-top: 3%;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-#login-reg-box #innerbox {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: rgb(176, 173, 173);
-    border-radius: 40px;
-    height: 150px;
-    width: 800px;
+.helpButton {
+    border-color: rgb(225, 172, 11);
+    float:right;
     
+}
+
+#help{
+    display: inline;
+    padding-top: 1.35%;
+    padding-right: 3%;
+    float: right;
 }
 
 li {

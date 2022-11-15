@@ -18,6 +18,5 @@ app.get('/', (req, res) => {
   res.sendFile("src/public/index.html")
 })
 
-const userRouter = require('./src/routes/users')
 
 app.listen(3000);

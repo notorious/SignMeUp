@@ -17,11 +17,11 @@
                 <h1 class="mt-5 mb-5 text-center text-primary"><b>Dashboard</b></h1>
             <% } else { %>
                 <h1 class="mt-5 mb-5 text-center text-primary"><b>Login</b></h1>
-            <% } %> 
+            <% } %>     
             <div class="row mt-5">
                 <div class="col-md-3">&nbsp;</div>
                 <div class="col-md-6">
-                <% if(session.user_id) { %>
+                <% if(session.user_id && (session.role == 1)) { %>
 
                     <h1>Hi <%= session.user_data.name %>, Welcome!</h1>
                     <h1> Name: <%= session.user_data.name %></h1>
@@ -30,12 +30,23 @@
                     <h1> Major: <%= session.user_data.major %></h1>
 
                     <a href="/logout" class="btn btn-primary">Logout</a>
+                    <a href="/student" class="btn btn-primary">Student</a>
+                <% } else if (session.user_id && (session.role == 2)) { %>
+                    <h1>Hi <%= session.user_data.name %>, Welcome!</h1>
+                    <h1> Name: <%= session.user_data.name %></h1>
+                    <h1> Address: <%= session.user_data.address %></h1>
+                    <h1> Telephone: <%= session.user_data.tele %></h1>
+                    <h1> Major: <%= session.user_data.major %></h1>
 
+                    <a href="/logout" class="btn btn-primary">Logout</a>
+                    <a href="/faculty" class="btn btn-primary">faculty</a>
+        
                 <% } else { %>
 
                     <div class="card">
                         <div class="card-header">Login</div>
                         <div class="card-body">
+                        <fieldset>
                             <form method="post" action="/login">
                                 <div class="mb-3">
                                     <label>Username</label>
@@ -45,13 +56,21 @@
                                     <label>Password</label>
                                     <input type="password" name="user_password" class="form-control" />
                                 </div>
+                                <label for="role">Role:</label>
+                                <select name="role" id="role">
+                                <optgroup label="role">
+                                    <option value="student">student</option>
+                                    <option value="faculty">faculty</option>
+                                </optgroup>
+
+                                </select>
                                 <div class="mb-3">
                                     <input type="submit" class="btn btn-primary" value="Login" />
                                 </div>
                             </form>
+                        </fieldset>
                         </div>
                     </div>
-
                 <% } %>
                 </div>
             </div>

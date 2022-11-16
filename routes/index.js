@@ -30,6 +30,7 @@ router.post('/login', function(request, response, next){
                     if(data[count].password == user_password)
                     {
                         request.session.user_id = data[count].id;
+                        request.session.user_name = username;
                         response.redirect("/");
                     }
                     else

@@ -174,8 +174,35 @@ async function returnStudentReport(id){
     });
     return await p;
 }
-/*
-async function createStudentSchedule(id, gname){
+
+async function returnStudentSchedule(id){
+    var mysql = require('mysql');
+    
+    var con = mysql.createConnection({
+        host: "fcfs.c2oe7fkglsr2.us-west-2.rds.amazonaws.com",
+        user: "admin",
+        password: "529dh-bj345-wbedaj",
+        database: "FCFS"
+    });
+
+    let p = new Promise(function(res,rej) {
+        con.connect(function(err){
+            if (err) throw err;
+            con.query(`SELECT id, classSchedule FROM Students WHERE id = ${id}`, function(err, result, fields) {
+                if (err) throw err;
+                gtable = result[0].classSchedule;
+                con.query(`SELECT * FROM ${gtable}`, function(err, result, fields) {
+                    if (err) throw err;
+                    console.log(result);
+                    res(result);
+                });
+            });          
+        });    
+    });
+    return await p;
+}
+
+async function enterStudentSchedule(id, gcourseName, gsemesterComp, gunits, gGrade){
     var mysql = require('mysql');
 
     var con = mysql.createConnection({
@@ -184,17 +211,20 @@ async function createStudentSchedule(id, gname){
         password: "529dh-bj345-wbedaj",
         database: "FCFS"
     });
-    table name
 
     con.connect(function(err) {
         if (err) throw err;
         console.log("connected!");
-        var sql = "CREATE TABLE Faculty (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), address VARCHAR(255), userName VARCHAR(255), password VARCHAR(255))";
-        con.query(sql, function (err, result) {
+        con.query(`SELECT id, classSchedule FROM Students WHERE id = ${id}`, function(err, result, fields) {
             if (err) throw err;
-            console.log("Table created");
-        });
+            gtable = result[0].classSchedule;
+            var sql = `INSERT INTO ${gTable} (courseName, semesterComp, units, grade) VALUES ("${gcourseName}", "${gsemesterComp}", "${gunits}", "${gGrade}")`;
+            con.query(sql, function(err, result, fields) {
+                if (err) throw err;
+                console.log("Table updated");
+            });
+        });   
     });
 }
-*/
-module.exports = {studentReg, facultyReg, returnTable, returnLogin, returnStudentReport};
+
+module.exports = {studentReg, facultyReg, returnTable, returnLogin, returnStudentReport, enterStudentSchedule, returnStudentSchedule};

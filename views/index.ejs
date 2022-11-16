@@ -34,9 +34,9 @@
                 <% } else if (session.user_id && (session.role == 2)) { %>
                     <h1>Hi <%= session.user_data.name %>, Welcome!</h1>
                     <h1> Name: <%= session.user_data.name %></h1>
-                    <h1> Address: <%= session.user_data.address %></h1>
+                    <h1> Office Number: <%= session.user_data.officeNum %></h1>
                     <h1> Telephone: <%= session.user_data.tele %></h1>
-                    <h1> Major: <%= session.user_data.major %></h1>
+                    <h1> Departments: <%= session.user_data.departments %></h1>
 
                     <a href="/logout" class="btn btn-primary">Logout</a>
                     <a href="/faculty" class="btn btn-primary">faculty</a>

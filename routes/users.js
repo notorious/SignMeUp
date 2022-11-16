@@ -1,13 +1,9 @@
-const express = require('express')
-const router = express.Router()
+var express = require('express');
+var router = express.Router();
 
-router.get('/new', (req, res) => {
-    res.send("Users.js file")
-})
+/* GET users listing. */
+router.get('/', function(req, res, next) {
+  res.send('respond with a resource');
+});
 
-router.get('/:id', (req, res) => {
-    res.send(`Hello user ${req.params.id}`)
-})
-  
-
-module.exports = router
+module.exports = router;

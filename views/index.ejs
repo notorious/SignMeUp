@@ -1,60 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>SignMeUp | Home</title>
-</head>
-<body>
-    <div id="help"><a href="help.html"><button type="button" class="helpButton" href="">Help</button></a></div>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <div id="id_homepage">
-        <a href="/">
-            <p style="font-size: 2em; font-weight: bold; color: rgb(225, 172, 11);">SignMeUp</p>
-        </a>
-        <h2 style="color: white; padding-top: .5%; margin-left: 2%;"> | F.C.F.S </h2>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    </div>
-    <div id="myline"></div>
-    
-    <div id="login-box">
-        <div id="login-box-top"></div>
-        
-        <div id="info">
-            <div id="row" style="text-align: center; padding-top: 2%;">
-                <h1>About SignMeUp</h1>
-                <p>The SignMeUp System serves admission, enrollment, and registration needs.</p>
-                <ul>
-                    <li>
-                        <strong>Student:</strong>
-                        Class schedule and registration, transcripts, official contact information
-                    </li>
-                    <li>
-                        <strong>Faculty:</strong>
-                        Grade submission, class rosters, add/drop management, course evaluation results
-                    </li>
-                    <li>
-                        <strong>Staff:</strong>
-                        Admissions reports, course demand, SMUGrades and SMURosters, enrollment reports, student registration
-                    </li>
-                </ul>
-            </div>
+        <title>Login</title>
+    </head>
+    <body>
 
-            <div id="login-reg-box">
-                <div id="innerbox">
-                    <button type="button" class="btn btn-dark btn-lg">Register</button>
-                    <a href="/login"><button type="button" class="btn btn-dark btn-lg" href="">Login</button></a>
+        <div class="container">
+            <h1 class="mt-5 mb-5 text-center text-primary"><b>Login</b></h1>
+
+            <div class="row mt-5">
+                <div class="col-md-3">&nbsp;</div>
+                <div class="col-md-6">
+                <% if(session.user_id) { %>
+
+                    <h1>Hi User, Welcome</h1>
+
+                    <a href="/logout" class="btn btn-primary">Logout</a>
+
+                <% } else { %>
+
+                    <div class="card">
+                        <div class="card-header">Login</div>
+                        <div class="card-body">
+                            <form method="post" action="/login">
+                                <div class="mb-3">
+                                    <label>Username</label>
+                                    <input type="text" name="username" class="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <label>Password</label>
+                                    <input type="password" name="user_password" class="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <input type="submit" class="btn btn-primary" value="Login" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                <% } %>
                 </div>
             </div>
         </div>
-
-        <div id="login-box-top"></div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
+    </body>
 </html>

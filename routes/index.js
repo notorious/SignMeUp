@@ -34,13 +34,13 @@ router.post('/login', function(request, response, next){
                     }
                     else
                     {
-                        response.send('Incorrect Password');
+                        response.redirect("/");
                     }
                 }
             }
             else
             {
-                response.send('Incorrect Username');
+                response.redirect("/");
             }
             response.end();
         });

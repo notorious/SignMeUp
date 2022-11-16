@@ -23,7 +23,7 @@
                 <div class="col-md-6">
                 <% if(session.user_id) { %>
 
-                    <h1>Hi <%= session.user_name %>, Welcome!</h1>
+                    <h1>Hi <%= session.user_data.name %>, Welcome!</h1>
                     <h1> Name: <%= session.user_data.name %></h1>
                     <h1> Address: <%= session.user_data.address %></h1>
                     <h1> Telephone: <%= session.user_data.tele %></h1>

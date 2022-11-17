@@ -34,7 +34,7 @@ router.post('/login', function(request, response, next){
                         request.session.user_id = data[count].id;
                         request.session.user_data = data[count];
                         request.session.role = 1;
-                        response.render("student-home");
+                        response.redirect("/");
                     }
                     else
                     {
@@ -65,7 +65,7 @@ router.post('/login', function(request, response, next){
                             request.session.user_id = data[count].id;
                             request.session.user_data = data[count];
                             request.session.role = 2;
-                            response.render("faculty-home");
+                            response.redirect("/");
                         }
                         else
                         {

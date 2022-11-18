@@ -34,7 +34,7 @@ router.post('/login', function(request, response, next){
                         request.session.user_id = data[count].id;
                         request.session.user_data = data[count];
                         request.session.role = 1;
-                        response.redirect("/");
+                        response.redirect("/student");
                     }
                     else
                     {
@@ -65,7 +65,7 @@ router.post('/login', function(request, response, next){
                             request.session.user_id = data[count].id;
                             request.session.user_data = data[count];
                             request.session.role = 2;
-                            response.redirect("/");
+                            response.redirect("/faculty");
                         }
                         else
                         {
@@ -102,6 +102,42 @@ router.get('/faculty', function(request, response, next){
 
 router.get('/student', function(request, response, next){
     response.render('student-home')
+})
+
+router.get('/class-schedule', function(request, response, next){
+    response.render('class-schedule')
+})
+
+router.get('/student-record', function(request, response, next){
+    response.render('student-record')
+})
+
+router.get('/course-registration', function(request, response, next){
+    response.render('course-registration')
+})
+
+router.get('/course-requirements', function(request, response, next){
+    response.render('course-requirements')
+})
+
+router.get('/faculty-course-grades', function(request, response, next){
+    response.render('faculty-course-grades')
+})
+
+router.get('/faculty-course-registration', function(request, response, next){
+    response.render('faculty-course-registration')
+})
+
+router.get('/faculty-course-requirements', function(request, response, next){
+    response.render('faculty-course-requirements')
+})
+
+router.get('/faculty-information', function(request, response, next){
+    response.render('faculty-information')
+})
+
+router.get('/faculty-student-record', function(request, response, next){
+    response.render('faculty-student-record')
 })
 
 module.exports = router;

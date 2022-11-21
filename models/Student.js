@@ -80,7 +80,7 @@ async function returnLogin(gtable, userName, password){
     });
     return await p;
 }
-
+/*
 (async () => {
     //temp = await dt.returnTable("Students");
     temp = await studentlogOn("testUpdate", "1234");
@@ -94,3 +94,4 @@ async function returnLogin(gtable, userName, password){
     }
     test.userNameUpdate("TestUpdate");
 })();
+*/

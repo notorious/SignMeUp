@@ -15,7 +15,37 @@ class Student{
     async userNameUpdate(newUserName){
         this.userName = newUserName;
         var id = this.id;
-            studentUpdate("userName", newUserName, id);
+        studentUpdate("userName", newUserName, id);
+    }
+
+    async nameUpdate(newName){
+        this.name = newName;
+        var id = this.id;
+        studentUpdate("name", newName, id);
+    }
+
+    async addressUpdate(newAddress){
+        this.address = newAddress;
+        var id = this.id;
+        studentUpdate("address", newAddress, id);
+    }
+
+    async passwordUpdate(newPassword){
+        this.password = newPassword;
+        var id = this.id;
+        studentUpdate("password", newPassword, id);
+    }
+
+    async teleUpdate(newTele){
+        this.tele = newTele;
+        var id = this.id;
+        studentUpdate("tele", newTele, id);
+    }
+
+    async majorUpdate(newMajor){
+        this.major = newMajor;
+        var id = this.id;
+        studentUpdate("major", newMajor, id);
     }
 }
 

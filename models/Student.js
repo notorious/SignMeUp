@@ -29,8 +29,8 @@ class Student{
         var id = this.id;
         studentUpdate("address", newAddress, id);
     }
-
-    async passwordUpdate(newPassword){
+//need to add: compare old password to database before changing it
+    async passwordUpdate(oldPassword, newPassword){
         this.password = newPassword;
         var id = this.id;
         studentUpdate("password", newPassword, id);
@@ -47,7 +47,7 @@ class Student{
         var id = this.id;
         studentUpdate("major", newMajor, id);
     }
-    
+
     async minorUpdate(newMinor){
         this.minor = newMinor;
         var id = this.id;
@@ -79,7 +79,7 @@ async function studentlogOn(userName, password){
 }
 
 
-function studentUpdate(gCoulumn, gUpdate, id){
+function studentUpdate(gColumn, gUpdate, id){
     var mysql = require('mysql');
 
     var con = mysql.createConnection({
@@ -92,7 +92,7 @@ function studentUpdate(gCoulumn, gUpdate, id){
     con.connect(function(err) {
         if (err) throw err;
         console.log("connected!");
-            var sql = `UPDATE Students SET ${gCoulumn} = "${gUpdate}" WHERE id = ${id}`;
+            var sql = `UPDATE Students SET ${gColumn} = "${gUpdate}" WHERE id = ${id}`;
             con.query(sql, function (err, result) {
                 if (err) throw err;
                 console.log("1 record updated");

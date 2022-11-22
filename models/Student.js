@@ -47,6 +47,18 @@ class Student{
         var id = this.id;
         studentUpdate("major", newMajor, id);
     }
+    
+    async minorUpdate(newMinor){
+        this.minor = newMinor;
+        var id = this.id;
+        studentUpdate("minor", newMinor, id);
+    }
+
+    async notesUpdate(newNotes){
+        this.notes = newNotes;
+        var id = this.id;
+        studentUpdate("notes", newNotes, id);
+    }
 }
 
 async function studentlogOn(userName, password){

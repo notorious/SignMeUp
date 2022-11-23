@@ -38,13 +38,13 @@ router.post('/login', function(request, response, next) {
                     }
                     else
                     {
-                        response.redirect("/");
+                        response.redirect("/login");
                     }
                 }
             }
             else
             {
-                response.redirect("/");
+                response.redirect("/login");
             }
             response.end();
         });
@@ -69,13 +69,13 @@ router.post('/login', function(request, response, next) {
                         }
                         else
                         {
-                            response.redirect("/");
+                            response.redirect("/login");
                         }
                     }
                 }
                 else
                 {
-                    response.redirect("/");
+                    response.redirect("/login");
                 }
                 response.end();
             });

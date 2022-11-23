@@ -91,7 +91,6 @@ router.post('/login', function(request, response, next) {
 router.get('/logout', function(request, response, next){
     request.session.destroy();
     response.redirect("/");
-
 });
 
 router.get('/login', function(request, response, next){
@@ -111,35 +110,35 @@ router.get('/class-schedule', function(request, response, next){
 })
 
 router.get('/student-record', function(request, response, next){
-    response.render('student-record')
+    response.render('student-record', {session : request.session})
 })
 
 router.get('/course-registration', function(request, response, next){
-    response.render('course-registration')
+    response.render('course-registration', {session : request.session})
 })
 
 router.get('/course-requirements', function(request, response, next){
-    response.render('course-requirements')
+    response.render('course-requirements', {session : request.session})
 })
 
 router.get('/faculty-course-grades', function(request, response, next){
-    response.render('faculty-course-grades')
+    response.render('faculty-course-grades', {session : request.session})
 })
 
 router.get('/faculty-course-registration', function(request, response, next){
-    response.render('faculty-course-registration')
+    response.render('faculty-course-registration', {session : request.session})
 })
 
 router.get('/faculty-course-requirements', function(request, response, next){
-    response.render('faculty-course-requirements')
+    response.render('faculty-course-requirements', {session : request.session})
 })
 
 router.get('/faculty-information', function(request, response, next){
-    response.render('faculty-information')
+    response.render('faculty-information', {session : request.session})
 })
 
 router.get('/faculty-student-record', function(request, response, next){
-    response.render('faculty-student-record')
+    response.render('faculty-student-record', {session : request.session})
 })
 
 module.exports = router;

@@ -1,6 +1,3 @@
-body {
-    background-image: url(../images/index_bg_1.gif);
-}
 .sidenav {
     height: 100%;
     width: 8%;
@@ -29,6 +26,7 @@ body {
     display: flex;
     flex-direction: row;
     margin: 0% 0% 0% 10%;
+    background-color: dodgerblue;
 
 }
 
@@ -52,12 +50,12 @@ body {
     justify-content: space-between;
     height: 1000px;
     width: auto;
-    background-color: #9AA5B1;
+    background-color: white;
     margin: 3% 3% 3% 10%;
     border-radius: 25px;
 }
 .helpButton {
-    border-color: rgb(225, 172, 11);
+    border-color: gold;
     float:right;
     
 }

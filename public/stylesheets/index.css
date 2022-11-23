@@ -1,17 +1,13 @@
-body {
-    background-image: url(../images/index_bg_1.gif);
-}
-
 #id_homepage {
     display: flex;
     flex-direction: row;
-    margin: 0% 10%;
-    border-bottom: 1px solid white;
+    justify-content: center;
+    background-color: dodgerblue;
 }
 
 #id_homepage a {
     text-decoration: none;
-    color: white;
+    color: dodgerblue;
 }
 
 #login-box {
@@ -20,7 +16,7 @@ body {
     justify-content: space-between;
     height: 600px;
     width: auto;
-    background-color: #9AA5B1;
+    background-color: white;
     margin: 3% 10%;
 }
 
@@ -46,7 +42,7 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(176, 173, 173);
+    background-color: #CCD0D8;
     border-radius: 25px;
     height: 150px;
     width: 350px;

@@ -1,5 +1,7 @@
 body {
     font-family: "Lato", sans-serif;
+    background-image: url(../images/25101.jpg);
+    background-size: cover;
 }
 
 li {

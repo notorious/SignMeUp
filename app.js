@@ -9,7 +9,7 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 app.use(session({
-  secret: 'My app',
+  secret: 'ultrasecretkey',
   resave: true,
   saveUninitialized: false
 }));

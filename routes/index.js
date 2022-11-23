@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-var database = require('../database');
+// Connect to Database
+var database = require('../public/javascripts/database');
 
-/* GET home page. */
+// GET '/' page
 router.get('/', function(req, res, next) {
   res.render('home', { title: 'Express', session : req.session });
 });
@@ -16,6 +17,7 @@ router.post('/login', function(request, response, next) {
 
     var user_password = request.body.user_password;
 
+    // Check if student, or faculty
     if(username && user_password && (role == "student"))
     {
       query = `
@@ -48,6 +50,7 @@ router.post('/login', function(request, response, next) {
             }
             response.end();
         });
+        
     } else if (username && user_password && (role == "faculty")) {
         query = `
         SELECT * FROM FCFS.Faculty
@@ -88,44 +91,44 @@ router.post('/login', function(request, response, next) {
 
 });
 
-router.get('/logout', function(request, response, next){
+router.get('/logout', function(request, response){
     request.session.destroy();
     response.redirect("/");
 });
 
-router.get('/login', function(request, response, next){
+router.get('/login', function(request, response){
     response.render('login', { session : request.session })
 })
 
-router.get('/faculty', function(request, response, next){
+router.get('/faculty', function(request, response){
     response.render('faculty-home', { session : request.session })
 })
 
-router.get('/student', function(request, response, next){
+router.get('/student', function(request, response){
     response.render('student-home', {session : request.session })
 })
 
-router.get('/class-schedule', function(request, response, next){
+router.get('/class-schedule', function(request, response){
     response.render('class-schedule', {session : request.session})
 })
 
-router.get('/student-record', function(request, response, next){
+router.get('/student-record', function(request, response){
     response.render('student-record', {session : request.session})
 })
 
-router.get('/course-registration', function(request, response, next){
+router.get('/course-registration', function(request, response){
     response.render('course-registration', {session : request.session})
 })
 
-router.get('/course-requirements', function(request, response, next){
+router.get('/course-requirements', function(request, response){
     response.render('course-requirements', {session : request.session})
 })
 
-router.get('/faculty-course-grades', function(request, response, next){
+router.get('/faculty-course-grades', function(request, response){
     response.render('faculty-course-grades', {session : request.session})
 })
 
-router.get('/faculty-course-registration', function(request, response, next){
+router.get('/faculty-course-registration', function(request, response){
     response.render('faculty-course-registration', {session : request.session})
 })
 
@@ -133,11 +136,11 @@ router.get('/faculty-course-requirements', function(request, response, next){
     response.render('faculty-course-requirements', {session : request.session})
 })
 
-router.get('/faculty-information', function(request, response, next){
+router.get('/faculty-information', function(request, response){
     response.render('faculty-information', {session : request.session})
 })
 
-router.get('/faculty-student-record', function(request, response, next){
+router.get('/faculty-student-record', function(request, response){
     response.render('faculty-student-record', {session : request.session})
 })
 

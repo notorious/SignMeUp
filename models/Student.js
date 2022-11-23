@@ -96,11 +96,11 @@ async function studentlogOn(userName, password){
         temp = await returnLogin("Students", userName, password);
         console.log(temp);
         if (temp[0] == null){
-            res([null, -1]);
+            res(null);
         }
         else{
             test = new Student(temp[0].id, temp[0].name, temp[0].address , userName, password, temp[0].classSchedule, temp[0].tele, temp[0].major, temp[0].minor, temp[0].notes);
-            res([test, 0]);
+            res(test);
         }
         })();
     });

@@ -15,51 +15,80 @@ class Student{
     async userNameUpdate(newUserName){
         this.userName = newUserName;
         var id = this.id;
-        studentUpdate("userName", newUserName, id);
+        this.studentUpdate("userName", newUserName, id);
     }
 
     async nameUpdate(newName){
         this.name = newName;
         var id = this.id;
-        studentUpdate("name", newName, id);
+        this.studentUpdate("name", newName, id);
     }
 
     async addressUpdate(newAddress){
         this.address = newAddress;
         var id = this.id;
-        studentUpdate("address", newAddress, id);
+        this.studentUpdate("address", newAddress, id);
     }
-//need to add: compare old password to database before changing it
+
     async passwordUpdate(oldPassword, newPassword){
-        this.password = newPassword;
-        var id = this.id;
-        studentUpdate("password", newPassword, id);
+        if (oldPassword == this.password){
+            console.log("Password match");
+            this.password = newPassword;
+            var id = this.id;
+            this.studentUpdate("password", newPassword, id);
+            return 0;
+        }
+        console.log("Password Mismatch");
+        return -1;
     }
 
     async teleUpdate(newTele){
         this.tele = newTele;
         var id = this.id;
-        studentUpdate("tele", newTele, id);
+        this.studentUpdate("tele", newTele, id);
     }
 
     async majorUpdate(newMajor){
         this.major = newMajor;
         var id = this.id;
-        studentUpdate("major", newMajor, id);
+        this.studentUpdate("major", newMajor, id);
     }
 
     async minorUpdate(newMinor){
         this.minor = newMinor;
         var id = this.id;
-        studentUpdate("minor", newMinor, id);
+        this.studentUpdate("minor", newMinor, id);
     }
 
     async notesUpdate(newNotes){
         this.notes = newNotes;
         var id = this.id;
-        studentUpdate("notes", newNotes, id);
+        this.studentUpdate("notes", newNotes, id);
+    }
+
+    studentUpdate(gColumn, gUpdate, id){
+        var mysql = require('mysql');
+    
+        var con = mysql.createConnection({
+            host: "fcfs.c2oe7fkglsr2.us-west-2.rds.amazonaws.com",
+            user: "admin",
+            password: "529dh-bj345-wbedaj",
+            database: "FCFS"
+        });
+        
+        con.connect(function(err) {
+            if (err) throw err;
+            console.log("connected!");
+                var sql = `UPDATE Students SET ${gColumn} = "${gUpdate}" WHERE id = ${id}`;
+                con.query(sql, function (err, result) {
+                    if (err) throw err;
+                    console.log("1 record updated");
+                    
+                });
+            });
     }
 }
+
 
 async function studentlogOn(userName, password){
     let p = new Promise(function(res,rej) {
@@ -76,29 +105,6 @@ async function studentlogOn(userName, password){
         })();
     });
     return await p;
-}
-
-
-function studentUpdate(gColumn, gUpdate, id){
-    var mysql = require('mysql');
-
-    var con = mysql.createConnection({
-        host: "fcfs.c2oe7fkglsr2.us-west-2.rds.amazonaws.com",
-        user: "admin",
-        password: "529dh-bj345-wbedaj",
-        database: "FCFS"
-    });
-    
-    con.connect(function(err) {
-        if (err) throw err;
-        console.log("connected!");
-            var sql = `UPDATE Students SET ${gColumn} = "${gUpdate}" WHERE id = ${id}`;
-            con.query(sql, function (err, result) {
-                if (err) throw err;
-                console.log("1 record updated");
-                
-            });
-        });
 }
 
 async function returnLogin(gtable, userName, password){

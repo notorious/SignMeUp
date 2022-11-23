@@ -12,10 +12,6 @@ connection.connect(function(error){
 	{
 		throw error;
 	}
-	else
-	{
-		console.log('MySQL Database is connected Successfully');
-	}
 });
 
 module.exports = connection;

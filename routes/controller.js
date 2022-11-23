@@ -44,7 +44,7 @@ function studentReg(gname, gaddress, guserName, gpassword, gdob, gtele, gmajor, 
     });
 }
 
-function facultyReg(gname, guserName, gpassword, gtele, gofficeTele, gofficeHours, gofficeNum, gtitle){
+function facultyReg(gname, guserName, gpassword, gtele, gofficeTele, gofficeHours, gofficeNum, gtitle, gdepartment, gaddress){
     var mysql = require('mysql');
 
     var con = mysql.createConnection({
@@ -58,7 +58,7 @@ function facultyReg(gname, guserName, gpassword, gtele, gofficeTele, gofficeHour
     con.connect(function(err) {
         if (err) throw err;
         console.log("connected!");
-        var sql = `INSERT INTO Faculty (name, userName, password, tele, officeTele, officeHours, officeNum, title) VALUES ("${gname}", "${guserName}", "${gpassword}", "${gtele}", "${gofficeTele}", "${gofficeHours}", "${gofficeNum}", "${gtitle}")`;
+        var sql = `INSERT INTO Faculty (name, userName, password, tele, officeTele, officeHours, officeNum, title, department, address) VALUES ("${gname}", "${guserName}", "${gpassword}", "${gtele}", "${gofficeTele}", "${gofficeHours}", "${gofficeNum}", "${gtitle}", "${gdepartment}, "${gaddress}")`;
         con.query(sql, function (err, result) {
             if (err) throw err;
             console.log("1 record inserted");

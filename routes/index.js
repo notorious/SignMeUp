@@ -82,7 +82,7 @@ router.post('/login', function(request, response, next) {
     }
     else
     {
-        response.send('Please Enter Username and Password Details');
+        response.redirect("/");
         response.end();
     }
 

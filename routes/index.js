@@ -5,7 +5,7 @@ var database = require('../database');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express', session : req.session });
+  res.render('home', { title: 'Express', session : req.session });
 });
 
 router.post('/login', function(request, response, next) {
@@ -38,13 +38,13 @@ router.post('/login', function(request, response, next) {
                     }
                     else
                     {
-                        response.redirect("/login");
+                        response.redirect("/");
                     }
                 }
             }
             else
             {
-                response.redirect("/login");
+                response.redirect("/");
             }
             response.end();
         });
@@ -69,13 +69,13 @@ router.post('/login', function(request, response, next) {
                         }
                         else
                         {
-                            response.redirect("/login");
+                            response.redirect("/");
                         }
                     }
                 }
                 else
                 {
-                    response.redirect("/login");
+                    response.redirect("/");
                 }
                 response.end();
             });

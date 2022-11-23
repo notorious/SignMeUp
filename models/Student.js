@@ -31,9 +31,15 @@ class Student{
     }
 //need to add: compare old password to database before changing it
     async passwordUpdate(oldPassword, newPassword){
-        this.password = newPassword;
-        var id = this.id;
-        studentUpdate("password", newPassword, id);
+        if (oldPassword == this.password){
+            console.log("Password match");
+            this.password = newPassword;
+            var id = this.id;
+            studentUpdate("password", newPassword, id);
+            return 0;
+        }
+        console.log("Password Mismatch");
+        return -1;
     }
 
     async teleUpdate(newTele){

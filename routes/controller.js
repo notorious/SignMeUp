@@ -65,7 +65,7 @@ function facultyReg(gname, guserName, gpassword, gtele, gofficeTele, gofficeHour
         });
     });
 }
-
+/*
 function facultyReg(gTable, gname, gaddress, guserName, gpassword){
     var mysql = require('mysql');
 
@@ -87,6 +87,7 @@ function facultyReg(gTable, gname, gaddress, guserName, gpassword){
         });
     });
 }
+*/
 /*
 function returnName(gtable){
     var mysql = require('mysql');

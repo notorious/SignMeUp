@@ -24,7 +24,7 @@ class Faculty {
             FacultyUpdate("Name", newName, id);
     }
 
-    async tleUpdate(newTele){
+    async teleUpdate(newTele){
         this.newTele = newTele;
         let id = this.id;
             FacultyUpdate("Telephone", newTele, id);

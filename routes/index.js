@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express', session : req.session });
 });
 
-router.post('/login', function(request, response, next){
+router.post('/login', function(request, response, next) {
 
     var role = request.body.role;
 
@@ -34,7 +34,7 @@ router.post('/login', function(request, response, next){
                         request.session.user_id = data[count].id;
                         request.session.user_data = data[count];
                         request.session.role = 1;
-                        response.redirect("/student");
+                        return response.redirect("/student");
                     }
                     else
                     {
@@ -65,7 +65,7 @@ router.post('/login', function(request, response, next){
                             request.session.user_id = data[count].id;
                             request.session.user_data = data[count];
                             request.session.role = 2;
-                            response.redirect("/faculty");
+                            return response.redirect("/faculty");
                         }
                         else
                         {
@@ -89,23 +89,25 @@ router.post('/login', function(request, response, next){
 });
 
 router.get('/logout', function(request, response, next){
-
     request.session.destroy();
-
     response.redirect("/");
 
 });
 
+router.get('/login', function(request, response, next){
+    response.render('login', { session : request.session })
+})
+
 router.get('/faculty', function(request, response, next){
-    response.render('faculty-home')
+    response.render('faculty-home', { session : request.session })
 })
 
 router.get('/student', function(request, response, next){
-    response.render('student-home')
+    response.render('student-home', {session : request.session })
 })
 
 router.get('/class-schedule', function(request, response, next){
-    response.render('class-schedule')
+    response.render('class-schedule', {session : request.session})
 })
 
 router.get('/student-record', function(request, response, next){

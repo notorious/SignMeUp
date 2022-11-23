@@ -9,9 +9,9 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 app.use(session({
-  secret : 'SECRETBITCH',
-  resave : true,
-  saveUninitialized : true
+  secret: 'My app',
+  resave: true,
+  saveUninitialized: false
 }));
 
 // view engine setup

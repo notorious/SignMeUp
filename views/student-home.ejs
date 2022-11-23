@@ -35,6 +35,11 @@
             <div id="row" style="text-align: center; padding-top: 2%;">
                 <h1>SignMeUp Student Home</h1>
                 <p>The SignMeUp System serves admission, enrollment, and registration needs.</p>
+                <h1>Hi <%= session.user_data.name %>, Welcome!</h1>
+                <h1> Name: <%= session.user_data.name %></h1>
+                <h1> Address: <%= session.user_data.address %></h1>
+                <h1> Telephone: <%= session.user_data.tele %></h1>
+                <h1> Major: <%= session.user_data.major %></h1>
             </div>
         </div>
 

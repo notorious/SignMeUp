@@ -68,8 +68,112 @@ class Student{
         this.studentUpdate("notes", newNotes, id);
     }
 
-    returnClassSchedule(){
+    returnCompletedClassSchedule(){
+        var x = this.classComplete;
+        var y = "";
+        var z = new Array(6);
+        var q = [];
+        var count = 0;
+        for (let i = 0; i < x.length; i++){
+            if (x[i] == ","){
+                z[count] = y;
+                count++;
+                y = "";
+            }
+            else if (x[i] == " " || x[i] == "{"){}
+            else if (x[i] == "\""){
+                i++;
+                while(x[i] !== "\""){
+                    y += x[i];
+                    i++;
+                    
+                } 
+            }
+            else if(x[i] == "}"){
+                q.push(z);
+                z = new Array(6);
+                count = 0;
+            }
+            else{
+                y += x[i];
+                
+                
+            }
+        }
 
+        return q;
+    }
+
+    returnCurrentClassSchedule(){
+        var x = this.classCurrent;
+        var y = "";
+        var z = new Array(6);
+        var q = [];
+        var count = 0;
+        for (let i = 0; i < x.length; i++){
+            if (x[i] == ","){
+                z[count] = y;
+                count++;
+                y = "";
+            }
+            else if (x[i] == " " || x[i] == "{"){}
+            else if (x[i] == "\""){
+                i++;
+                while(x[i] !== "\""){
+                    y += x[i];
+                    i++;
+                    
+                } 
+            }
+            else if(x[i] == "}"){
+                q.push(z);
+                z = new Array(6);
+                count = 0;
+            }
+            else{
+                y += x[i];
+                
+                
+            }
+        }
+
+        return q;
+    }
+
+    returnExtClassSchedule(){
+        var x = this.classExt;
+        var y = "";
+        var z = new Array(6);
+        var q = [];
+        var count = 0;
+        for (let i = 0; i < x.length; i++){
+            if (x[i] == ","){
+                z[count] = y;
+                count++;
+                y = "";
+            }
+            else if (x[i] == " " || x[i] == "{"){}
+            else if (x[i] == "\""){
+                i++;
+                while(x[i] !== "\""){
+                    y += x[i];
+                    i++;
+                    
+                } 
+            }
+            else if(x[i] == "}"){
+                q.push(z);
+                z = new Array(6);
+                count = 0;
+            }
+            else{
+                y += x[i];
+                
+                
+            }
+        }
+
+        return q;
     }
 
     studentUpdate(gColumn, gUpdate, id){

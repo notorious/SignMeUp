@@ -237,3 +237,5 @@ async function returnLogin(gtable, userName, password){
     });
     return await p;
 }
+
+module.exports = {studentlogOn, Student};

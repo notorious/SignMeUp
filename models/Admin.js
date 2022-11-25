@@ -40,7 +40,7 @@ class Admin {
         });
     }   
     //Student registration creates and adds a student into the student registration
-    studentReg(sId, sName, sAddress, sUserName, sPassword, sClassSchedule, sTele, sMajor, sMinor, sNotes) {
+    studentReg(sId, sName, sAddress, sUserName, sPassword, sclassComplete, sclassCurrent, sclassExt, sTele, sMajor, sMinor, sNotes) {
 
         var mysql = require('mysql');
 
@@ -57,7 +57,7 @@ class Admin {
             if (err) throw err;
 
             console.log("connected");
-            var sql = `INSERT INTO Student(id, name, address, userName, password, classSchedule, telephone,major, minor, notes) VALUES("${sId}", "${sName}", "${sAddress}", "${sUserName}", "${sPassword}", "${sClassSchedule}", "${sTele}" "${sMajor}", "${sMinor}", "${sNotes}")`;
+            var sql = `INSERT INTO Student(id, name, address, userName, password, classComplete, classCurrent, classExt, telephone,major, minor, notes) VALUES("${sId}", "${sName}", "${sAddress}", "${sUserName}", "${sPassword}", "${sclassComplete}", "${sclassCurrent}", "${sclassExt}", "${sTele}" "${sMajor}", "${sMinor}", "${sNotes}")`;
             con.query(sql, function
                 (err, result) {
                 if(err) throw err;

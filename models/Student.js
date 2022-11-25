@@ -68,36 +68,40 @@ class Student{
         this.studentUpdate("notes", newNotes, id);
     }
 
+//the next 3 methods take the class complete current and external string and extract the string into a usable array of arrays.
     returnCompletedClassSchedule(){
         var x = this.classComplete;
         var y = "";
         var z = new Array(6);
         var q = [];
         var count = 0;
-        for (let i = 0; i < x.length; i++){
-            if (x[i] == ","){
-                z[count] = y;
-                count++;
-                y = "";
-            }
-            else if (x[i] == " " || x[i] == "{"){}
-            else if (x[i] == "\""){
-                i++;
-                while(x[i] !== "\""){
-                    y += x[i];
+        if (x != null){
+            for (let i = 0; i < x.length; i++){
+                if (x[i] == ","){
+                    z[count] = y;
+                    count++;
+                    y = "";
+                }
+                else if (x[i] == " " || x[i] == "{"){}
+                else if (x[i] == "\""){
                     i++;
+                    while(x[i] !== "\""){
+                        y += x[i];
+                        i++;
+                        
+                    } 
+                }
+                else if(x[i] == "}"){
+                    q.push(z);
+                    z = new Array(6);
+                    count = 0;
+                }
+                else{
+                    y += x[i];
                     
-                } 
-            }
-            else if(x[i] == "}"){
-                q.push(z);
-                z = new Array(6);
-                count = 0;
-            }
-            else{
-                y += x[i];
-                
-                
+                    
+                }
+
             }
         }
 
@@ -110,33 +114,34 @@ class Student{
         var z = new Array(6);
         var q = [];
         var count = 0;
-        for (let i = 0; i < x.length; i++){
-            if (x[i] == ","){
-                z[count] = y;
-                count++;
-                y = "";
-            }
-            else if (x[i] == " " || x[i] == "{"){}
-            else if (x[i] == "\""){
-                i++;
-                while(x[i] !== "\""){
-                    y += x[i];
+        if (x != null){
+            for (let i = 0; i < x.length; i++){
+                if (x[i] == ","){
+                    z[count] = y;
+                    count++;
+                    y = "";
+                }
+                else if (x[i] == " " || x[i] == "{"){}
+                else if (x[i] == "\""){
                     i++;
+                    while(x[i] !== "\""){
+                        y += x[i];
+                        i++;
+                        
+                    } 
+                }
+                else if(x[i] == "}"){
+                    q.push(z);
+                    z = new Array(6);
+                    count = 0;
+                }
+                else{
+                    y += x[i];
                     
-                } 
-            }
-            else if(x[i] == "}"){
-                q.push(z);
-                z = new Array(6);
-                count = 0;
-            }
-            else{
-                y += x[i];
-                
-                
+                    
+                }
             }
         }
-
         return q;
     }
 
@@ -146,32 +151,35 @@ class Student{
         var z = new Array(6);
         var q = [];
         var count = 0;
-        for (let i = 0; i < x.length; i++){
-            if (x[i] == ","){
-                z[count] = y;
-                count++;
-                y = "";
-            }
-            else if (x[i] == " " || x[i] == "{"){}
-            else if (x[i] == "\""){
-                i++;
-                while(x[i] !== "\""){
-                    y += x[i];
+        if (x != null){
+            for (let i = 0; i < x.length; i++){
+                if (x[i] == ","){
+                    z[count] = y;
+                    count++;
+                    y = "";
+                }
+                else if (x[i] == " " || x[i] == "{"){}
+                else if (x[i] == "\""){
                     i++;
+                    while(x[i] !== "\""){
+                        y += x[i];
+                        i++;
+                        
+                    } 
+                }
+                else if(x[i] == "}"){
+                    q.push(z);
+                    z = new Array(6);
+                    count = 0;
+                }
+                else{
+                    y += x[i];
                     
-                } 
-            }
-            else if(x[i] == "}"){
-                q.push(z);
-                z = new Array(6);
-                count = 0;
-            }
-            else{
-                y += x[i];
-                
-                
+                    
+                }
             }
         }
+    
 
         return q;
     }
@@ -196,6 +204,185 @@ class Student{
                     
                 });
             });
+    }
+
+    returnGPA(){
+        q = this.returnCurrentClassSchedule();
+        var gpa = 0;
+        var units = 0;
+        for (let i = 0; i < q.length; i++){
+            switch(q[i][4]){
+                case "A+":
+                    gpa += (4 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "A":
+                    gpa += (4 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "A-":
+                    gpa += (3.7 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "B+":
+                    gpa += (3.3 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "B":
+                    gpa += (3 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "B-":
+                    gpa += (2.7 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "C+":
+                    gpa += (2.3 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "C":
+                    gpa += (2 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "C-":
+                    gpa += (1.7 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "D+":
+                    gpa += (1.3 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "D":
+                    gpa += (1 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "D-":
+                    units += parseInt(q[i][3]);
+                    break;
+                case "F":
+                    units += parseInt(q[i][3]);
+                    break;
+                default:
+                    break;
+            }
+        }
+        q = this.returnCompletedClassSchedule();
+        for (let i = 0; i < q.length; i++){
+            switch(q[i][4]){
+                case "A+":
+                    gpa += (4 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "A":
+                    gpa += (4 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "A-":
+                    gpa += (3.7 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "B+":
+                    gpa += (3.3 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "B":
+                    gpa += (3 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "B-":
+                    gpa += (2.7 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "C+":
+                    gpa += (2.3 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "C":
+                    gpa += (2 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "C-":
+                    gpa += (1.7 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "D+":
+                    gpa += (1.3 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "D":
+                    gpa += (1 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "D-":
+                    units += parseInt(q[i][3]);
+                    break;
+                case "F":
+                    units += parseInt(q[i][3]);
+                    break;
+                default:
+                    break;
+            }
+        }
+        q = this.returnExtClassSchedule();
+        for (let i = 0; i < q.length; i++){
+            switch(q[i][4]){
+                case "A+":
+                    gpa += (4 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "A":
+                    gpa += (4 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "A-":
+                    gpa += (3.7 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "B+":
+                    gpa += (3.3 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "B":
+                    gpa += (3 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "B-":
+                    gpa += (2.7 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "C+":
+                    gpa += (2.3 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "C":
+                    gpa += (2 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "C-":
+                    gpa += (1.7 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "D+":
+                    gpa += (1.3 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "D":
+                    gpa += (1 * parseInt(q[i][3]));
+                    units += parseInt(q[i][3]);
+                    break;
+                case "D-":
+                    units += parseInt(q[i][3]);
+                    break;
+                case "F":
+                    units += parseInt(q[i][3]);
+                    break;
+                default:
+                    break;
+            }
+        }
+        gpa = gpa/units;
+        console.log(gpa);
+        return gpa;
     }
 }
 

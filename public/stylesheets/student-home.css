@@ -16,7 +16,7 @@
     display: block;
 }
 
-.sidenav a.active {
+.sidenav a.active, a:visited {
     background-color: gold;
     color: white;
 }
@@ -41,7 +41,7 @@
     }
     .sidenav a {float: left;}
     #content {margin-left: 0; padding: 0;}
-    #main-box {margin:0%; border-radius: 0%;}
+    #main-box {margin:0%; border-radius: 0px;}
 }
 
 @media screen and (max-width: 400px) {
@@ -59,14 +59,15 @@
 
 }
 
-#id_homepage a:link {
+/*For some reason this also changes the sidebar colors */
+#id_homepage a:link, a:visited {
     text-decoration: none;
-    color: rgb(252, 8, 8);
+    color: rgb(255, 255, 255);
 }
 
 #id_homepage a:hover {
     text-decoration: none;
-    color: rgb(252, 8, 8);
+    color: rgb(255, 0, 0);
 }
 
 #myline{

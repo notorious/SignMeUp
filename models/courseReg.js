@@ -21,11 +21,3 @@ async function returnCourses(){
 }
 
 module.exports = {returnCourses};
-
-
-(async () => {
-    
-    temp = await returnCourses();
-    console.log(temp);
-})();
-

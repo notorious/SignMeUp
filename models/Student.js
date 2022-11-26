@@ -207,7 +207,7 @@ class Student{
     }
 
     returnGPA(){
-        q = this.returnCurrentClassSchedule();
+        var q = this.returnCurrentClassSchedule();
         var gpa = 0;
         var units = 0;
         for (let i = 0; i < q.length; i++){
@@ -382,7 +382,7 @@ class Student{
         }
         gpa = gpa/units;
         console.log(gpa);
-        return gpa;
+        return gpa.toFixed(2);
     }
 }
 

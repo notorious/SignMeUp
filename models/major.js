@@ -1,4 +1,12 @@
-async function returnMajor(gmajor){
+class Major {
+    constructor(studentMajor, studentClass) {
+        this.studentMajor = studentMajor;
+        this.studentClass = studentClass;
+
+    }
+
+
+async function returnCourses(studentMajor, studentClass) {
     var mysql = require('mysql');
     
     var con = mysql.createConnection({
@@ -8,16 +16,26 @@ async function returnMajor(gmajor){
         database: "FCFS"
     });
 
+    let Major = this.studentMajor;
+
+
+
     let p = new Promise(function(res,rej) {
         con.connect(function(err){
             if (err) throw err;
-            con.query(`SELECT * FROM Major WHERE majorTitle = "${gmajor}"`, function(err, result, fields) {
+            con.query("SELECT * FROM Major WHERE Courses = studentClass", function (err, result) {
                 if (err) throw err;
                 res(result);
+                if (result.length == 0)
+                    console.log("Course not valid")
+                else
+                    console.log("Course accepted")
+                
             });
         });    
     });
     return await p;
 }
+}
 
-module.exports = {returnMajor};
+module.exports = {returnCourses};

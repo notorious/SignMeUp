@@ -75,11 +75,11 @@ async function FacultyLogOn(userName, password){
         temp = await returnLogin("Faculty", userName, password);
         console.log(temp);
         if (temp[0] == null){
-            res([null, -1]);
+            res(null);
         }
         else{
             test = new Faculty(temp[0].id, temp[0].name, temp[0].address , userName, password, temp[0].title, temp[0].tele, temp[0].department, temp[0].officeTele, temp[0].currentCourses);
-            res([test, 0]);
+            res(test);
         }
         })();
     });

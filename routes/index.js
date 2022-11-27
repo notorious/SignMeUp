@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var dt = require('../models/Student');
+var st = require('../models/Student');
+var fc = require('../models/Faculty');
 
 // GET '/' page
 router.get('/', function(req, res) {
@@ -20,7 +21,7 @@ router.post('/login', function(request, response) {
 
         var student;
         (async () => {
-            student = await dt.studentlogOn(username, user_password);
+            student = await st.studentlogOn(username, user_password);
             if (student === null) {
                 console.log("User does not exist, check credentials before running again")
                 response.redirect("/");
@@ -40,7 +41,7 @@ router.post('/login', function(request, response) {
 
         var faculty;
         (async () => {
-            faculty = await dt.FacultyLogOn(username, user_password);
+            faculty = await fc.FacultyLogOn(username, user_password);
             if (faculty === null) {
                 console.log("User does not exist, check credentials before running again")
                 response.redirect("/");

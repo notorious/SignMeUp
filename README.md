@@ -5,8 +5,7 @@ Project: SignMeUp (Course Registration)
 Team Name: FCFS
 
 ## Instruction
-Requirements: Node.js installed, might or might not need to re-configure database.
-
+Requirements: Node.js installed.
 
 Start by downloading everything in package.json
 ```npm install``` (In Directory/Folder)
@@ -14,7 +13,7 @@ Start by downloading everything in package.json
 To start the server using devStart 
 ```npm start```   
 
-Open up ```http://localhost:3000/``` to start accessing!
+Open up ```http://localhost:3000/``` to start accessing locally.
 
 
 

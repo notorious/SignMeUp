@@ -2,9 +2,6 @@ var express = require('express');
 var router = express.Router();
 var dt = require('../models/Student');
 
-// Connect to Database
-var database = require('../public/javascripts/database');
-
 // GET '/' page
 router.get('/', function(req, res) {
   res.render('home', { title: 'Express', session : req.session });

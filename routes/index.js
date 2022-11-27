@@ -2,11 +2,18 @@ var express = require('express');
 var router = express.Router();
 var st = require('../models/Student');
 var fc = require('../models/Faculty');
+const e = require('express');
 
 // GET '/' page
-router.get('/', function(req, res) {
-  res.render('home', { title: 'Express', session : req.session });
-});
+router.get('/', function(request, response) {
+    if (request.session.studentObj != null) {
+        response.render('student-home', {session : request.session})
+    } else if (request.session.facultyObj != null) {
+        response.render('faculty-home', {session : request.session})
+    } else {
+        response.render('home', {session: request.session});    
+    }
+})
 
 // POST '/login' page
 router.post('/login', function(request, response) {
@@ -63,56 +70,122 @@ router.get('/logout', function(request, response){
     response.redirect("/");
 });
 
-router.get('/login', function(request, response){
-    response.render('login', { session : request.session})
-})
-
 router.get('/help', function(request, response){
-    response.render('student-help-page', { session : request.session})
-})
-
-router.get('/faculty', function(request, response){
-    response.render('faculty-home', { session : request.session})
+    if (request.session.studentObj !== null || request.session.facultyObj !== null) {
+        response.render('student-help-page', {session : request.session});
+    } else {
+        response.redirect("/");
+    }
 })
 
 router.get('/student', function(request, response){
-    response.render('student-home', {session : request.session})
+    if (request.session.studentObj != null) {
+        response.render('student-home', {session : request.session});
+    } else if (request.session.facultyObj != null) {
+        response.redirect("/faculty"); 
+    } else {
+        response.redirect("/"); 
+    }
 })
 
 router.get('/class-schedule', function(request, response){
-    response.render('student-class-schedule', {session : request.session})
+    if (request.session.studentObj != null) {
+        response.render('student-class-schedule', {session : request.session});
+    } else if (request.session.facultyObj != null) {
+        response.redirect("/faculty"); 
+    } else {
+        response.redirect("/"); 
+    }
 })
 
 router.get('/student-record', function(request, response){
-    response.render('student-electronic-record', {session : request.session})
+    if (request.session.studentObj != null) {
+        response.render('student-electronic-record', {session : request.session});
+    } else if (request.session.facultyObj != null) {
+        response.redirect("/faculty"); 
+    } else {
+        response.redirect("/");  
+    }
 })
 
 router.get('/student-course-registration', function(request, response){
-    response.render('student-course-registration', {session : request.session})
+    if (request.session.studentObj != null) {
+        response.render('student-course-registration', {session : request.session});
+    } else if (request.session.facultyObj != null) {
+        response.redirect("/faculty"); 
+    } else {
+        response.redirect("/");  
+    }
 })
 
 router.get('/student-course-requirements', function(request, response){
-    response.render('student-major-course', {session : request.session})
+    if (request.session.studentObj != null) {
+        response.render('student-major-course', {session : request.session});
+    } else if (request.session.facultyObj != null) {
+        response.redirect("/faculty"); 
+    } else {
+        response.redirect("/");   
+    }
+})
+
+router.get('/faculty', function(request, response){
+    if (request.session.studentObj != null) {
+        response.redirect("/student"); 
+    } else if (request.session.facultyObj != null) {
+        response.render('faculty-home', {session : request.session});
+    } else {
+        response.redirect("/");   
+    }
 })
 
 router.get('/faculty-course-grades', function(request, response){
-    response.render('faculty-course-grades', {session : request.session})
+    if (request.session.studentObj != null) {
+        response.redirect("/student"); 
+    } else if (request.session.facultyObj != null) {
+        response.render('faculty-course-grades', {session : request.session});
+    } else {
+        response.redirect("/");  
+    }
 })
 
 router.get('/faculty-course-registration', function(request, response){
-    response.render('faculty-course-registration', {session : request.session})
+    if (request.session.studentObj != null) {
+        response.redirect("/student"); 
+    } else if (request.session.facultyObj != null) {
+        response.render('faculty-course-registration', {session : request.session});
+    } else {
+        response.redirect("/");   
+    }
 })
 
-router.get('/faculty-course-requirements', function(request, response, next){
-    response.render('faculty-course-requirements', {session : request.session})
+router.get('/faculty-course-requirements', function(request, response){
+    if (request.session.studentObj != null) {
+        response.redirect("/student"); 
+    } else if (request.session.facultyObj != null) {
+        response.render('faculty-course-requirements', {session : request.session});
+    } else {
+        response.redirect("/");  
+    }
 })
 
 router.get('/faculty-information', function(request, response){
-    response.render('faculty-information', {session : request.session})
+    if (request.session.studentObj != null) {
+        response.redirect("/student"); 
+    } else if (request.session.facultyObj != null) {
+        response.render('faculty-information', {session : request.session});
+    } else {
+        response.redirect("/");   
+    }
 })
 
 router.get('/faculty-student-record', function(request, response){
-    response.render('faculty-student-record', {session : request.session})
+    if (request.session.studentObj != null) {
+        response.redirect("/student"); 
+    } else if (request.session.facultyObj != null) {
+        response.render('faculty-student-record', {session : request.session});
+    } else {
+        response.redirect("/");    
+    }
 })
 
 module.exports = router;

@@ -13,20 +13,17 @@
 
   <!--Note(Vi): Finished Navbar-->
   <nav id="nav" class="navbar navbar-expand-lg navbar-dark bg-primary" style="border-radius: 25px;">
-      <a class="navbar-brand" href="/student" style="font-weight: bolder; color:#e9ecef;">SignMeUp <span class="badge badge-secondary">F.C.F.S</span></a>
+      <a class="navbar-brand" href="/student" style="font-weight: bolder;">SignMeUp <span class="badge badge-secondary">F.C.F.S</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/student">Home</a>
+            <a class="nav-link" href="/class-schedule">Class Schedule</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="/class-schedule">Class Schedule</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/student-record">Electronic Record</a>
+            <a class="nav-link" href="#">Electronic Record</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Course Registration</a>
@@ -42,11 +39,8 @@
       </div>
   </nav>
   
-  <div style="display: flex; margin-top: 1%; justify-content: center;">
-    <h1>COURSES</h1>
-  </div>
   <!--Container to render data-->
-  <div class="container-lg border border-primary" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-around; align-content: center; background-color: #e9ecef; border-radius: 25px; margin-top: 1%;">
+  <div class="container-lg" style="display: flex; flex-direction: row; background-color: #e9ecef; border-radius: 25px; margin-top: 1%;">
     <% for(let i=0; i<session.studentSchedule.length; i++) { %>  
       <div class="card" style="width: 18rem; margin: 2%;">
         <div class="card-header">

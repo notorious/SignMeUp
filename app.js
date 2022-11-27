@@ -29,8 +29,6 @@ app.use(favicon(__dirname + '/public/images/favicon.ico'));
 // Routes
 app.use('/', indexRouter);
 
-console.log("http://localhost:3000/")
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

@@ -10,7 +10,8 @@ router.get('/', function(req, res) {
   res.render('home', { title: 'Express', session : req.session });
 });
 
-router.post('/login', function(request, response, next) {
+// POST '/login' page
+router.post('/login', function(request, response) {
     var role = request.body.role;
 
     var username = request.body.username;
@@ -18,16 +19,16 @@ router.post('/login', function(request, response, next) {
     var user_password = request.body.user_password;
 
     // Check if student, or faculty
-    if(username && user_password && (role == "student"))
-    {
-        var temp;
+    if(username && user_password && (role == "student")) {
+
+        var student;
         (async () => {
-            temp = await dt.studentlogOn(username, user_password);
-            if (temp === null) {
+            student = await dt.studentlogOn(username, user_password);
+            if (student === null) {
                 console.log("User does not exist, check credentials before running again")
                 response.redirect("/");
             } else {
-                request.session.studentObj = temp;
+                request.session.studentObj = student;
                 request.session.studentSchedule = request.session.studentObj.returnCurrentClassSchedule();
                 request.session.studentCompletedClasses = request.session.studentObj.returnCompletedClassSchedule();
                 request.session.studentCompletedClassesEXT = request.session.studentObj.returnExtClassSchedule();
@@ -39,39 +40,20 @@ router.post('/login', function(request, response, next) {
         })();
         
     } else if (username && user_password && (role == "faculty")) {
-        query = `
-        SELECT * FROM FCFS.Faculty
-        WHERE userName = "${username}"
-        `;
 
-            database.query(query, function(error, data){
+        var faculty;
+        (async () => {
+            faculty = await dt.FacultyLogOn(username, user_password);
+            if (faculty === null) {
+                console.log("User does not exist, check credentials before running again")
+                response.redirect("/");
+            } else {
+                request.session.facultyObj = faculty;
+                return response.redirect("/faculty");
+            }
+        })();
 
-                if(data.length > 0)
-                {
-                    for(var count = 0; count < data.length; count++)
-                    {
-                        if(data[count].password == user_password)
-                        {
-                            request.session.user_id = data[count].id;
-                            request.session.user_data = data[count];
-                            request.session.role = 2;
-                            return response.redirect("/faculty");
-                        }
-                        else
-                        {
-                            response.redirect("/");
-                        }
-                    }
-                }
-                else
-                {
-                    response.redirect("/");
-                }
-                response.end();
-            });
-    }
-    else
-    {
+    } else {
         response.redirect("/");
         response.end();
     }
@@ -88,7 +70,7 @@ router.get('/login', function(request, response){
 })
 
 router.get('/help', function(request, response){
-    response.render('help-page', { session : request.session})
+    response.render('student-help-page', { session : request.session})
 })
 
 router.get('/faculty', function(request, response){
@@ -100,19 +82,19 @@ router.get('/student', function(request, response){
 })
 
 router.get('/class-schedule', function(request, response){
-    response.render('class-schedule', {session : request.session})
+    response.render('student-class-schedule', {session : request.session})
 })
 
 router.get('/student-record', function(request, response){
     response.render('student-electronic-record', {session : request.session})
 })
 
-router.get('/course-registration', function(request, response){
-    response.render('course-registration', {session : request.session})
+router.get('/student-course-registration', function(request, response){
+    response.render('student-course-registration', {session : request.session})
 })
 
-router.get('/course-requirements', function(request, response){
-    response.render('course-requirements', {session : request.session})
+router.get('/student-course-requirements', function(request, response){
+    response.render('student-major-course', {session : request.session})
 })
 
 router.get('/faculty-course-grades', function(request, response){

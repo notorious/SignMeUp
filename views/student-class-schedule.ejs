@@ -6,6 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesheets/student.css">
+    <title>Class Schedule</title>
+</head>
+<!--Note(Vi): Temp Style-->
+<body style="display: flex; flex-direction: column; min-height: 100vh; padding: 1% 1%;">
+
+  <!--Note(Vi): Finished Navbar-->
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheets/student.css">
     <title>Student Portal</title>
 </head>
 <!--Note(Vi): Temp Style-->
@@ -19,10 +33,10 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="/student">Home</a>
+          <a class="nav-link" href="/student">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/class-schedule">Class Schedule</a>
+          <a class="nav-link active" href="/class-schedule">Class Schedule</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/student-record">Electronic Record</a>
@@ -50,6 +64,30 @@
       <p>It uses allows student like you to access all your needs!</p>
       <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
     </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
+  
+  <div style="display: flex; margin-top: 1%; justify-content: center;">
+    <h1>COURSES</h1>
+  </div>
+  <!--Container to render data-->
+  <div class="container-lg border border-primary" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-around; align-content: center; background-color: #e9ecef; border-radius: 25px; margin-top: 1%;">
+    <% for(let i=0; i<session.studentSchedule.length; i++) { %>  
+      <div class="card" style="width: 18rem; margin: 2%;">
+        <div class="card-header">
+          Class: <%= session.studentSchedule[i][1] %><br>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Semester: <%= session.studentSchedule[i][2] %><br></li>
+          <li class="list-group-item">Units: <%= session.studentSchedule[i][3] %><br></li>
+          <li class="list-group-item">Grade: <%= session.studentSchedule[i][4] %><br></li>
+        </ul>
+      </div>
+    <% } %>
   </div>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

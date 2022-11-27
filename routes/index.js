@@ -1,16 +1,16 @@
 var express = require('express');
 var router = express.Router();
+var dt = require('../models/Student');
 
 // Connect to Database
 var database = require('../public/javascripts/database');
 
 // GET '/' page
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   res.render('home', { title: 'Express', session : req.session });
 });
 
 router.post('/login', function(request, response, next) {
-
     var role = request.body.role;
 
     var username = request.body.username;
@@ -20,36 +20,23 @@ router.post('/login', function(request, response, next) {
     // Check if student, or faculty
     if(username && user_password && (role == "student"))
     {
-      query = `
-      SELECT * FROM FCFS.Students
-      WHERE userName = "${username}"
-      `;
-
-        database.query(query, function(error, data){
-
-            if(data.length > 0)
-            {
-                for(var count = 0; count < data.length; count++)
-                {
-                    if(data[count].password == user_password)
-                    {
-                        request.session.user_id = data[count].id;
-                        request.session.user_data = data[count];
-                        request.session.role = 1;
-                        return response.redirect("/student");
-                    }
-                    else
-                    {
-                        response.redirect("/");
-                    }
-                }
-            }
-            else
-            {
+        var temp;
+        (async () => {
+            temp = await dt.studentlogOn(username, user_password);
+            if (temp === null) {
+                console.log("User does not exist, check credentials before running again")
                 response.redirect("/");
+            } else {
+                request.session.studentObj = temp;
+                request.session.studentSchedule = request.session.studentObj.returnCurrentClassSchedule();
+                request.session.studentCompletedClasses = request.session.studentObj.returnCompletedClassSchedule();
+                request.session.studentCompletedClassesEXT = request.session.studentObj.returnExtClassSchedule();
+                request.session.studentGPA = request.session.studentObj.returnGPA();
+                console.log(request.session.studentGPA)
+                console.log(request.session.studentCompletedClassesEXT);
+                return response.redirect("/student");
             }
-            response.end();
-        });
+        })();
         
     } else if (username && user_password && (role == "faculty")) {
         query = `
@@ -97,15 +84,19 @@ router.get('/logout', function(request, response){
 });
 
 router.get('/login', function(request, response){
-    response.render('login', { session : request.session })
+    response.render('login', { session : request.session})
+})
+
+router.get('/help', function(request, response){
+    response.render('help-page', { session : request.session})
 })
 
 router.get('/faculty', function(request, response){
-    response.render('faculty-home', { session : request.session })
+    response.render('faculty-home', { session : request.session})
 })
 
 router.get('/student', function(request, response){
-    response.render('student-home', {session : request.session })
+    response.render('student-home', {session : request.session})
 })
 
 router.get('/class-schedule', function(request, response){
@@ -113,7 +104,7 @@ router.get('/class-schedule', function(request, response){
 })
 
 router.get('/student-record', function(request, response){
-    response.render('student-record', {session : request.session})
+    response.render('student-electronic-record', {session : request.session})
 })
 
 router.get('/course-registration', function(request, response){

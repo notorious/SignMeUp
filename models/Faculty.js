@@ -129,3 +129,5 @@ async function returnLogin(gtable, userName, password){
     });
     return await p;
 }
+
+module.exports = {FacultyLogOn, Faculty};

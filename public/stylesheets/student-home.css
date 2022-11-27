@@ -1,73 +1,43 @@
 .sidenav {
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    position: fixed;
     height: 100%;
-    overflow: auto;
+    width: 8%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
     background-color: rgb(17, 17, 17);
-}
-
-.sidenav a {
-    padding: 16px;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .sidenav a {
+    padding: 6px 6px 20px 16px;
     text-decoration: none;
     font-size: 16px;
     color: #afafaf;
     display: block;
-}
-
-.sidenav a.active, a:visited {
-    background-color: gold;
-    color: white;
-}
-
-.sidenav a:hover:not(.active) {
-    text-decoration: none;
-    background-color: white;
-    color: #555;
-}
-
-#content {
-    margin-left: 200px;
-    padding: 1px 16px;
-    height: 1000px;
-}
-
-@media screen and (max-width: 700px) {
-    .sidenav {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
-    .sidenav a {float: left;}
-    #content {margin-left: 0; padding: 0;}
-    #main-box {margin:0%; border-radius: 0px;}
-}
-
-@media screen and (max-width: 400px) {
-    .sidenav a {
-        text-align: center;
-        float: none;
-    }
-}
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
 
 #id_homepage {
     display: flex;
     flex-direction: row;
-    margin: 0% 0% 0% 1px;
-    background-color: #3566D8;
+    margin: 0% 0% 0% 10%;
+    background-color: dodgerblue;
 
 }
 
-/*For some reason this also changes the sidebar colors */
-#id_homepage a:link, a:visited {
+#id_homepage a:link {
     text-decoration: none;
-    color: rgb(255, 255, 255);
+    color: rgb(252, 8, 8);
 }
 
 #id_homepage a:hover {
     text-decoration: none;
-    color: rgb(255, 0, 0);
+    color: rgb(252, 8, 8);
 }
 
 #myline{
@@ -81,10 +51,9 @@
     height: 1000px;
     width: auto;
     background-color: white;
+    margin: 3% 3% 3% 10%;
     border-radius: 25px;
 }
-
-/* help button moved to menu sidebar
 .helpButton {
     border-color: gold;
     float:right;
@@ -97,7 +66,7 @@
     padding-right: 3%;
     float: right;
 }
-*/
+
 li {
     list-style: none;
 }

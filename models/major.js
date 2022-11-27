@@ -38,7 +38,36 @@ async function returnMajorOutline(gid){
                 if (result[0] != null){
                     var temp = result[0].selectedCourses;
                     var temp2 = result[0].statusHistory;
-                    var array1;
+                    var array1 = [];
+                    var array2 = [];
+                    var string = "";
+                    var y = 0;
+                    for (let i = 0; i < temp.length; i++){
+                        while(temp[i] != "," && i < temp.length){
+                            string += temp[i];
+                            i++;
+                        }
+                        i++;
+                        array1.push(string);
+                        string = "";
+                        while (y < temp2.length){
+                            if(temp2[y] == "}"){
+                                y++;
+                                break;
+                            }
+                            else if (temp2[y] == "{" ){}
+                            
+                            else{
+                                string += temp2[y];
+                            }
+                            y++;
+                        }
+                        array1.push(string);
+                        array2.push(array1);
+                        string = "";
+                        array1 = new Array();
+                    }
+                    res(array2);
                 }
                 res(result);
             });
